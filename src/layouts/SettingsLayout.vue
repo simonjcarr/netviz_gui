@@ -16,7 +16,6 @@
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
-
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
@@ -26,7 +25,7 @@
         <q-item-label
           header
         >
-
+        <div>Settings</div>
         </q-item-label>
 
         <EssentialLink
@@ -51,17 +50,17 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksList = [
   {
-    title: 'Network',
+    title: 'Home',
     caption: '',
-    icon: 'network_check',
-    link: '/network'
+    icon: 'home',
+    link: '/'
   },
   {
-    title: 'Settings',
+    title: 'Node Types',
     caption: '',
-    icon: 'settings',
+    icon: 'computer',
     link: '/settings/node-types'
-  }
+  },
 
 ]
 
