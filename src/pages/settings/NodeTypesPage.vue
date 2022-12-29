@@ -1,17 +1,22 @@
 <template>
-  <NodeTypesCreateForm />
-  <NodeTypesTable />
+  <NodeTypesCreateForm @created="handleCreated" />
+  <NodeTypesTable :newTypeId="newTypeId" />
 </template>
 
-<script>
+<script setup>
 import NodeTypesTable from 'components/settings/NodeTypesTable.vue'
 import NodeTypesCreateForm from 'src/components/settings/NodeTypesCreateForm.vue';
-export default {
-  components: {
-    NodeTypesTable,
-    NodeTypesCreateForm
-  }
+import { ref } from 'vue'
+let newTypeId = ref('')
+components: {
+  NodeTypesTable,
+  NodeTypesCreateForm
 }
+
+const handleCreated = (newNodeType) => {
+  newTypeId.value = newNodeType.id
+}
+
 </script>
 
 <style>

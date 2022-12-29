@@ -1,20 +1,20 @@
 <template>
   <div class="q-mt-md">
     <q-table
-      title="Node Types"
+      title="Tags"
       :rows="rows"
       :columns="columns"
       row-key="id"
       selection="multiple"
       v-model:selected="selected"
     >
-    <template #top-right>
+      <template #top-right>
         <q-toolbar v-if="selected.length > 0">
           <q-toolbar-title>
             <q-btn
 
               color="negative"
-              label="Delete Selected"
+              label="Delete Tag"
               icon="delete"
               @click="handleDelete"
               class="q-ml-md"
@@ -22,36 +22,33 @@
           </q-toolbar-title>
         </q-toolbar>
       </template>
-    </q-table>
+      </q-table>
   </div>
 </template>
 
 <script setup>
-import { onMounted, ref, defineProps, watch } from 'vue';
+import { ref, onMounted, defineProps, watch } from 'vue'
 import { Notify } from 'quasar'
-
 const props = defineProps({
-  newTypeId: {
+  newTagId: {
     default: ''
   }
 })
-let selected = ref([])
+
 const columns = [
   {
     name: 'name',
-    label: 'Name',
+    label: 'Tag Name',
     align: 'left',
     field: 'name',
     sortable: true
-  },
-  { name: 'color', align: 'center', label: 'Color', field: 'color', sortable: true },
-  { name: 'size', label: 'Size', field: 'size', sortable: true },
+  }
 ]
 
 let rows = ref([])
-
-const getNodeTypes = () => {
-  fetch("http://localhost:3333/api/v1/node-types")
+const selected = ref([])
+const getTags = () => {
+  fetch('http://localhost:3333/api/v1/tags')
     .then(response => response.json())
     .then(data => {
       rows.value = data
@@ -59,33 +56,38 @@ const getNodeTypes = () => {
     .catch(error => console.error("Error: ", error))
 }
 
+watch(() => props.newTagId, (newTagId) => {
+  getTags()
+})
+
 onMounted(() => {
-  getNodeTypes()
+  getTags()
 })
-watch(() => props.newTypeId, (newTypeId) => {
-  getNodeTypes()
-})
+
 const handleDelete = () => {
-  // Delete selected items by an api delete call to node-types
-  selected.value.forEach((item) => {
-    fetch(`http://localhost:3333/api/v1/node-types/${item.id}`, {
-      method: 'DELETE',
+  let deleteCount = selected.value.length
+  selected.value.forEach((tag, index) => {
+    fetch(`http://localhost:3333/api/v1/tags/${tag.id}`, {
+      method: 'DELETE'
     })
       .then(response => response.json())
       .then(data => {
-        selected.value.splice(0,1)
+        selected.value.splice(0, 1)
         if(selected.value.length === 0) {
-          getNodeTypes()
+          getTags()
           Notify.create({
-            message: 'Node type deleted',
+            message: `${deleteCount} Tags deleted successfully`,
             color: 'positive',
-            position: 'top-right',
-            timeout: 2000
+            position: 'top-right'
           })
         }
       })
       .catch(error => console.error("Error: ", error))
   })
-  console.log(selected.value)
+
 }
 </script>
+
+<style>
+
+</style>

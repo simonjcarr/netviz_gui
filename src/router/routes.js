@@ -19,6 +19,8 @@ const routes = [
     component: () => import('layouts/SettingsLayout.vue'),
     children: [
       { path: 'node-types', component: () => import('pages/settings/NodeTypesPage.vue') },
+      { path: 'tags', component: () => import('pages/settings/TagsPage.vue') },
+      { path: 'nodes', component: () => import('pages/settings/NodesPage.vue') },
     ]
   },
 

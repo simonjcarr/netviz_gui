@@ -1,47 +1,47 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
+      <q-header elevated>
+        <q-toolbar>
+          <q-btn
+            flat
+            dense
+            round
+            icon="menu"
+            aria-label="Menu"
+            @click="toggleLeftDrawer"
+          />
 
-        <q-toolbar-title>
-          NetViz
-        </q-toolbar-title>
-      </q-toolbar>
-    </q-header>
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
-      <q-list>
-        <q-item-label
-          header
-        >
-        <div>Settings</div>
-        </q-item-label>
+          <q-toolbar-title>
+            NetViz
+          </q-toolbar-title>
+        </q-toolbar>
+      </q-header>
+      <q-drawer
+        v-model="leftDrawerOpen"
+        show-if-above
+        bordered
+      >
+        <q-list>
+          <q-item-label
+            header
+          >
+          <div>Settings</div>
+          </q-item-label>
 
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
+          <EssentialLink
+            v-for="link in essentialLinks"
+            :key="link.title"
+            v-bind="link"
+          />
+        </q-list>
+      </q-drawer>
 
-    <q-page-container>
-      <div class="q-pa-md">
-        <router-view />
-      </div>
-    </q-page-container>
-  </q-layout>
+      <q-page-container>
+        <div class="q-pa-md">
+          <router-view />
+        </div>
+      </q-page-container>
+    </q-layout>
 </template>
 
 <script>
@@ -60,6 +60,18 @@ const linksList = [
     caption: '',
     icon: 'computer',
     link: '/settings/node-types'
+  },
+  {
+    title: 'Tags',
+    caption: '',
+    icon: 'tag',
+    link: '/settings/tags'
+  },
+  {
+    title: 'Nodes',
+    caption: '',
+    icon: 'hub',
+    link: '/settings/nodes'
   },
 
 ]
