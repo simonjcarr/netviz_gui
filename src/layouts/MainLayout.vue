@@ -38,7 +38,7 @@
     </q-drawer>
 
     <q-page-container>
-      <div class="q-pa-md">
+      <div class="q-pa-md" style="height: 94vh">
         <router-view />
       </div>
     </q-page-container>

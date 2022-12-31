@@ -45,10 +45,10 @@ const props = defineProps({
 let selected = ref([])
 const columns = [
   {
-    name: 'name',
-    label: 'Name',
+    name: 'label',
+    label: 'Label',
     align: 'left',
-    field: 'name',
+    field: 'label',
     sortable: true,
   },
   { name: 'ipv4', align: 'center', label: 'ipv4', field: 'ipv4', sortable: true },

@@ -1,11 +1,9 @@
 <template>
-  <div>Network Home Page</div>
+  <NetworkDisplay />
 </template>
 
-<script>
-export default {
-
-}
+<script setup>
+  import NetworkDisplay from 'components/network/NetworkDisplay.vue'
 </script>
 
 <style>
