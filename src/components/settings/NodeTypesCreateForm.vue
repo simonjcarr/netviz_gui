@@ -3,8 +3,8 @@
   <div class="q-pa-md q-gutter-sm">
     <q-btn label="Create Node Type" color="primary" @click="showForm = true" />
 
-    <q-dialog v-model="showForm">
-      <q-card>
+    <q-dialog v-model="showForm" >
+      <q-card style="width: 100%">
         <q-card-section>
           <div class="text-h6">Create Node Type</div>
         </q-card-section>
