@@ -48,6 +48,7 @@ const getDataSet = async () => {
           label: node.label,
           size: node.type.size,
           color: node.type.color,
+          group: node.group
         })
     })
     // dataSet.value = rawData.value
