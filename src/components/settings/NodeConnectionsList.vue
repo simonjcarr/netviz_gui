@@ -1,11 +1,11 @@
 <template>
   <q-list bordered v-if="connections.length > 0">
     <div class="q-pa-md" style="font-weight: bold">
-      This node is connected to the following
+      This node is connected to the following other nodes
     </div>
     <q-item clickable v-ripple v-for="connection in connections" :key="connection.id">
       <q-item-section avatar><q-icon name="lan" color="primary" /></q-item-section>
-      <q-item-section>  {{ connection.name }} ({{ connection.nodeTypeName }})</q-item-section>
+      <q-item-section>  {{ connection.label }} ({{ connection.nodeTypeName }})</q-item-section>
     </q-item>
   </q-list>
   <div v-else>

@@ -20,6 +20,7 @@ const routes = [
     children: [
       { path: 'node-types', component: () => import('pages/settings/NodeTypesPage.vue') },
       { path: 'tags', component: () => import('pages/settings/TagsPage.vue') },
+      { path: 'groups', component: () => import('src/pages/settings/GroupsPage.vue')},
       { path: 'nodes', component: () => import('pages/settings/NodesPage.vue') },
     ]
   },

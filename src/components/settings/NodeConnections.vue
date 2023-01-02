@@ -5,11 +5,13 @@
         <q-icon name="hub" color="primary" />
         Node Connections</div>
     </q-card-section>
-    <q-card-section>
-      <NodeConnectionsCreateForm />
-    </q-card-section>
+
     <q-card-section>
       <NodeConnectionsList :nodeId="props.nodeId" />
+    </q-card-section>
+    <q-card-section>
+      <div>Add new connection</div>
+      <NodeConnectionsCreateForm :nodeId="nodeId" />
     </q-card-section>
   </q-card>
 </template>

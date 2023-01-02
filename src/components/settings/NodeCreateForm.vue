@@ -36,6 +36,11 @@
             <div>
               <q-input filled v-model="project" label="Project" type="text" />
             </div>
+            <div>
+              <q-select filled v-model="groupSelected" :options="groupList"  option-value="id" option-label="name"
+                label="Select Group" />
+            </div>
+
 
             <div>
               <q-btn label="Submit" type="submit" color="primary" />
@@ -62,6 +67,8 @@ const nodeTypesList = ref([])
 let typeId = ref('')
 const nodeTagsList = ref([])
 let nodeTagsSelected = ref([])
+let groupList = ref([])
+let groupSelected = ref(null)
 let ipv4 = ref('')
 let hostname = ref('')
 let project = ref('')
@@ -80,9 +87,16 @@ const getTagList = async () => {
   nodeTagsList.value = data
 }
 
+const getGroups = async () => {
+  const res = await fetch('http://localhost:3333/api/v1/groups')
+  const data = await res.json()
+  groupList.value = data
+}
+
 onMounted(() => {
   getNodeTypes()
   getTagList()
+  getGroups()
 })
 
 let onSubmit = () => {
@@ -92,12 +106,13 @@ let onSubmit = () => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      name: name.value,
+      label: name.value,
       typeId: typeId.value.id,
       ipv4: ipv4.value,
       hostname: hostname.value,
       project: project.value,
-      tags: nodeTagsSelected.value
+      tags: nodeTagsSelected.value,
+      groupId: groupSelected.value.id
     })
   })
     .then(response => response.json())

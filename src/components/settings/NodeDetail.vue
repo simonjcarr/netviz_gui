@@ -9,8 +9,8 @@
     </q-card-section>
     <q-card-section>
       <div class="row">
-        <div class="text-weight-bold col-12 col-lg-6">name</div>
-        <div class="col-12 col-lg-6">{{ node.name }}</div>
+        <div class="text-weight-bold col-12 col-lg-6">Label</div>
+        <div class="col-12 col-lg-6">{{ node.label }}</div>
       </div>
       <div class="row q-mt-sm">
         <div class="text-weight-bold col-12 col-lg-6">Hostname</div>
@@ -27,6 +27,10 @@
       <div class="row q-mt-sm">
         <div class="text-weight-bold col-12 col-lg-6">Node Type</div>
         <div class="col-12 col-lg-6">{{ node.type.name }}</div>
+      </div>
+      <div class="row q-mt-sm">
+        <div class="text-weight-bold col-12 col-lg-6">Group</div>
+        <div class="col-12 col-lg-6">{{ node.group.name || ''}}</div>
       </div>
       <div class="row q-mt-sm">
         <div class="text-weight-bold col-12 col-lg-6">Tags</div>

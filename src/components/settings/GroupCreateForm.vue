@@ -1,18 +1,18 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <q-btn label="Create Tag" color="primary" @click="showForm = true" />
+    <q-btn label="Create Group" color="primary" @click="showForm = true" />
 
     <q-dialog v-model="showForm">
       <q-card style="width: 100%">
         <q-card-section>
-          <div class="text-h6">Create Tag</div>
+          <div class="text-h6">Create Group</div>
         </q-card-section>
 
         <q-card-section class="q-pt-none">
           <q-form @submit="onSubmit" class="q-gutter-md" @reset="onReset" ref="tagsForm">
             <div>
-              <q-input v-model="name" label="Tag Name" filled lazy-rules
-                :rules="[val => val.length > 0 || 'Tag Name is required']" />
+              <q-input v-model="name" label="Group Name" filled lazy-rules
+                :rules="[val => val.length > 0 || 'Group Name is required']" />
             </div>
 
             <div>
@@ -40,7 +40,7 @@ const emit = defineEmits(['created'])
 
 
 let onSubmit = () => {
-  fetch('http://localhost:3333/api/v1/tags', {
+  fetch('http://localhost:3333/api/v1/groups', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -55,7 +55,7 @@ let onSubmit = () => {
       name.value = ''
       tagsForm.value.resetValidation()
       Notify.create({
-        message: 'Tag created successfully',
+        message: 'Group created successfully',
         color: 'positive',
         position: 'top-right'
       })
